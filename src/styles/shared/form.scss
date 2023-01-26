@@ -26,17 +26,28 @@
             width: 100%;
             border: 0;
             margin-bottom: 15px;
-            &.input {
+            &.input, &.select {
                 background: $lightGray;
                 padding-left: 15px;
                 &:focus {
                     outline: none;
                 }
             }
+            &.select {
+                &, option {
+                    text-transform: capitalize;
+                    color: black;
+                    &:first-child {
+                        color: gray;
+                    }
+                }
+            }
             &.submit-btn {
                 background: $mainYellow;
                 margin-bottom: 0;
                 cursor: pointer;
+                font-weight: bold;
+                font-size: 15px;
             }
         }
         .error-message {

@@ -10,3 +10,9 @@ export type OrderDetails = {
     receiverPhoneNumber: string;
     token?: string;
 };
+
+export type City = {
+    enName: string;
+    heName: string;
+    price: number;
+}

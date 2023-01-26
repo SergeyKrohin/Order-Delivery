@@ -5,6 +5,7 @@ import { retry, catchError, tap } from 'rxjs/operators';
 import { LoginDetails, OrderDetails } from '../../types/types';
 import { ToastrService } from 'ngx-toastr';
 import { CookiesService } from '../cookies/cookies.service';
+import { AbstractControl } from '@angular/forms';
 
 @Injectable()
 export class DataService {
@@ -31,7 +32,7 @@ export class DataService {
         .pipe(catchError((err) => this.handleError(err)))
     }
 
-    public submitOrder(orderDetails: OrderDetails): Observable<any> {
+    public submitOrder(orderDetails: any): Observable<any> {
         const token = this.cookiesService.getCookie('token');
         if(!token) {
             throw new Error('Token invalid');
@@ -41,6 +42,12 @@ export class DataService {
         
         return this.http
         .post(this.apiUrl + '/submit', orderDetails)
+        .pipe(catchError((err) => this.handleError(err)))
+    }
+
+    public getCities() {
+        return this.http
+        .get(this.apiUrl + '/cities')
         .pipe(catchError((err) => this.handleError(err)))
     }
 
