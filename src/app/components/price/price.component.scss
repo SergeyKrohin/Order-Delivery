@@ -1,0 +1,9 @@
+@import "../../../styles/vars/colors.scss";
+
+.container {
+    font-weight: bold;
+    color: $mainYellow;
+    position: absolute;
+    bottom: 20px;
+    font-size: 20px;
+}

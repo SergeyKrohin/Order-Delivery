@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
+import { Price } from './components/price/price.component';
 import { UtilsService } from './services/utils/utils.service';
 import { DataService } from './services/data/api.service';
 import { CookiesService } from './services/cookies/cookies.service';
@@ -16,7 +17,8 @@ import { OrderDeliveryComponent  } from './components/order-delivery/order-deliv
   declarations: [
     AppComponent,
     LoginComponent,
-    OrderDeliveryComponent
+    OrderDeliveryComponent,
+    Price
   ],
   imports: [
     BrowserModule,

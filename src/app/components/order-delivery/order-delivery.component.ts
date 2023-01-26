@@ -22,6 +22,10 @@ export class OrderDeliveryComponent implements OnInit {
 
     private IsraelPhonePattern = '^0(5[^7]|[2-4]|[8-9]|7[0-9])[0-9]{7}$';
     public cities: any = [];
+    public fee = 10;
+    public vat = 0.17;
+    public price = 0;
+    public currency = 'NIS';
     public deliveryDetailsForm = new FormGroup({
         senderName: new FormControl('', [
             Validators.required
@@ -49,6 +53,32 @@ export class OrderDeliveryComponent implements OnInit {
         ])
     });
 
+    public calcPrice(pickupCity: string, dropOffCity: string, citiesList: Array<City>, fee: number, vat: number): number {
+        let price = 0,
+            pickUpCityPrice = 0,
+            dropOffCityPrice = 0;
+    
+        // find the prices of the two cities
+        for (const city of citiesList) {
+            if (city.enName === pickupCity) {
+                pickUpCityPrice = city.price;
+            } else if (city.enName === dropOffCity) {
+                dropOffCityPrice = city.price;
+            }
+        }
+    
+        // if the cities are the same, charge the price of that city
+        if (pickupCity === dropOffCity) {
+            price = pickUpCityPrice;
+        } else {
+            // if the cities are different, charge the price of both cities plus fee
+            price = pickUpCityPrice + dropOffCityPrice + 10;
+        }
+    
+        // add VAT to the price
+        return price + (price * vat);;
+    }
+
     public onSubmit() {
         if(!this.deliveryDetailsForm.valid) {
             return this.deliveryDetailsForm.markAllAsTouched();
@@ -61,6 +91,7 @@ export class OrderDeliveryComponent implements OnInit {
                     pickupCity: '',
                     dropOffCity: ''    
                 });
+                this.price = 0;
             },
             error: (err) => console.log(err)
         });
@@ -70,6 +101,9 @@ export class OrderDeliveryComponent implements OnInit {
         const input = e.target as HTMLInputElement;
         const self: any = this;
         self[controlName].patchValue(input.value);
+        if(this.pickupCity.value && this.dropOffCity.value) {
+            this.price = this.calcPrice(this.pickupCity.value, this.dropOffCity.value, this.cities, this.fee,this.vat);
+        }
     }
 
     get senderName(): any {

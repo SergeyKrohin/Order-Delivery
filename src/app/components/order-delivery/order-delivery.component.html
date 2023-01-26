@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <select formControlName="pickupCity" (change)="onCitySelected($event, 'pickupCity')" class="form-control select">
                         <option value="" selected disabled hidden>City</option>
-                        <option *ngFor="let city of cities" [ngValue]="city.enName">{{city.enName}}</option>
+                        <option *ngFor="let city of cities" [value]="city.enName">{{city.enName}}</option>
                     </select>
                     <div *ngIf="pickupCity && pickupCity.invalid && pickupCity.touched" class="error-message">
                         Pickup City is required
@@ -64,6 +64,9 @@
             <section class="submit-section">
                 <div class="form-group">
                     <button class="submit-btn form-control">Order</button>
+                </div>
+                <div *ngIf="price" class="price">
+                    <price [value]="price" [currency]="currency"></price>
                 </div>
             </section>
         </form>

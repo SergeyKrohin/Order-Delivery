@@ -6,6 +6,7 @@ import { LoginDetails, OrderDetails } from '../../types/types';
 import { ToastrService } from 'ngx-toastr';
 import { CookiesService } from '../cookies/cookies.service';
 import { AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';   
 
 @Injectable()
 export class DataService {
@@ -13,7 +14,8 @@ export class DataService {
     constructor(
         private http: HttpClient, 
         private toastr: ToastrService, 
-        private cookiesService: CookiesService
+        private cookiesService: CookiesService,
+        private router: Router
     ) {}
 
     private apiUrl = 'https://mock-stg.getpackage-dev.com';
@@ -35,7 +37,8 @@ export class DataService {
     public submitOrder(orderDetails: any): Observable<any> {
         const token = this.cookiesService.getCookie('token');
         if(!token) {
-            throw new Error('Token invalid');
+            this.router.navigate(['/login']);
+            return this.handleError(new Error('Token invalid'));
         } else {
             orderDetails.token = token;
         }
