@@ -1,0 +1,25 @@
+.metrics {
+    position: relative;
+    width: 830px;
+    margin: 35px auto 20px auto;
+    .metric-options {
+        text-transform: capitalize;
+        display: block;
+        height: 35px;
+        width: 110px;
+        font-size: 18px;
+        padding-left: 8px;
+        background-color: #fff;
+        box-shadow: rgb(0 0 0 / 24%) 0 3px 8px;
+        border-radius: 6px;
+        border: 0;
+        outline: none;
+    }
+    .metric-label {
+      font-weight: bold;
+    }
+    .metric-label, .metric-options {
+        margin-left: 20px;
+        display: inline-block;
+    }
+}

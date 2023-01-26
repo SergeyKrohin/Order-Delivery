@@ -1,0 +1,41 @@
+<div class="form-overlay">
+    <div class="form-container">
+        <form [formGroup]="deliveryDetailsForm" (ngSubmit)="onSubmit()">
+            <section class="pickup-section">
+                <label>Pickup goods from:</label>
+                <div class="form-group">
+                    <input type="text" formControlName="senderName" class="form-control input" placeholder="Sender Name" />
+                    <div *ngIf="senderName && senderName.invalid && senderName.touched" class="error-message">
+                        Name is required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" formControlName="senderPhoneNumber" class="form-control input" placeholder="Sender Phone Number" />
+                    <div *ngIf="senderPhoneNumber && senderPhoneNumber.invalid && senderPhoneNumber.touched" class="error-message">
+                        Please enter a valid phone number
+                    </div>
+                </div>
+            </section>
+            <section class="deliver-section">
+                <label>Deliver goods to:</label>
+                <div class="form-group">
+                    <input type="text" formControlName="receiverName" class="form-control input" placeholder="Receiver Name" />
+                    <div *ngIf="receiverName && receiverName.invalid && receiverName.touched" class="error-message">
+                        Name is required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" formControlName="receiverPhoneNumber" class="form-control input" placeholder="Receiver Phone Number" />
+                    <div *ngIf="receiverPhoneNumber && receiverPhoneNumber.invalid && receiverPhoneNumber.touched" class="error-message">
+                        Please enter a valid phone number
+                    </div>
+                </div>
+            </section>
+            <section class="submit-section">
+                <div class="form-group">
+                    <button class="submit-btn form-control">Order</button>
+                </div>
+            </section>
+        </form>
+    </div>
+</div>

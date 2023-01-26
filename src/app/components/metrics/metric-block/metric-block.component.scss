@@ -1,0 +1,66 @@
+@import "../../../../styles/variables";
+
+:host {
+    &:first-child {
+        .metric-block {
+             margin-left: 20px;
+        }
+    }
+    .metric-block {
+        display: inline-block;
+        margin: 40px 20px 40px 0;
+        padding: 10px;
+        text-align: center;
+        width: 160px;
+        height: 200px;
+        position: relative;
+        .metric-icon {
+            width: 85px;
+        }
+        .metric-value {
+            font-size: 35px;
+            color: $lightblue;
+        }
+        .metric-name {
+            font-size: 16px;
+            text-transform: capitalize;
+        }
+        .front, .back {
+          display: inline-block;
+          background-color: #fff;
+          box-shadow: rgb(0 0 0 / 24%) 0 3px 8px;
+          border-radius: 10px;
+          padding: 10px;
+          text-align: center;
+          width: 160px;
+          height: 200px;
+          position: absolute;
+          left: 0;
+        }
+        &:hover > .front{
+          transform: perspective( 600px ) rotateY( -180deg );
+        }
+        &:hover > .back{
+          transform: perspective( 600px ) rotateY( 0deg );
+        }
+        .front {
+          transform: perspective( 600px ) rotateY( 0deg );
+          border-radius: 7px;
+          backface-visibility: hidden;
+          transition: transform .5s linear 0s;
+        }
+        .back {
+          transform: perspective( 600px ) rotateY( 180deg );
+          border-radius: 7px;
+          backface-visibility: hidden;
+          transition: transform .5s linear 0s;
+          height: 200px;
+          line-height: 200px;
+          span {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 18px; /* <-- adjust this */
+          }
+        }
+    }
+}

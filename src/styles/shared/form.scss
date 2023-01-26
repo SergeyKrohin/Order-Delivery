@@ -1,0 +1,51 @@
+@import "../vars/colors.scss";
+
+.form-overlay {
+    height: 100%;
+    background: $darkOverlay;
+    position: relative;
+    .form-container {
+        border-radius: 5px;
+        background: $white;
+        box-shadow: $inputShadow;
+        width: 400px;
+        padding: 60px 40px;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        margin: auto;
+        .form-container, .error-message, label {
+            margin-bottom: 15px;
+        }
+        .form-control {
+            box-sizing: border-box;
+            height: 40px;
+            width: 100%;
+            border: 0;
+            margin-bottom: 15px;
+            &.input {
+                background: $lightGray;
+                padding-left: 15px;
+                &:focus {
+                    outline: none;
+                }
+            }
+            &.submit-btn {
+                background: $mainYellow;
+                margin-bottom: 0;
+                cursor: pointer;
+            }
+        }
+        .error-message {
+            color: $errorMessage;
+            font-size: 13px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+@import "../../../styles/shared/form.scss";
+
+.form-overlay {
+    .form-container {
+        width: 600px;
+        section {
+            vertical-align: top;
+            &.pickup-section, &.deliver-section {
+                width: calc(50% - 5px);
+                display: inline-block;
+            }
+            &.pickup-section {
+                margin-right: 10px;
+            }
+        }
+    }
+}
